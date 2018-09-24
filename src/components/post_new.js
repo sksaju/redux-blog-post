@@ -11,12 +11,19 @@ class PostNew extends Component {
                     className="form-control"
                     {...field.input}
                 />
+                {field.meta.error}
             </div>
         );
     }
+    
+    onSubmit(values) {
+        console.log(values);
+    }
+
     render() {
+        const { handleSubmit } = this.props;
         return (
-            <form>
+            <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
                 <Field
                     label="Title"
                     name="title"
@@ -32,12 +39,13 @@ class PostNew extends Component {
                     name="content"
                     component={this.renderField}
                 />
+                <button type="submit" className="btn btn-success">Submit</button>
             </form>
         );
     };
 }
 
-validate(values) {
+function validate(values) {
     const errors = {};
     //validate the inputs from values
     if(!values.title) {
