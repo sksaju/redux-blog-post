@@ -11,7 +11,7 @@ class PostNew extends Component {
                     className="form-control"
                     {...field.input}
                 />
-                {field.meta.error}
+                { (field.meta.touched) ? field.meta.error : '' }
             </div>
         );
     }
@@ -55,7 +55,7 @@ function validate(values) {
         errors.categories = "Enter some categories";
     }
     if(!values.content) {
-        errors.categories = "Enter some content please";
+        errors.content = "Enter some content please";
     }
     //If errors is empty, the form is fine to submit
     //If has *any* properties, redux form assumes form is invalid
