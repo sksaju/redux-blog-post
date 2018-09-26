@@ -22,14 +22,18 @@ class PostShow extends Component {
             return <div>Loading...</div>;
         }
         return (
-            <div>
-                <Link to="/">Back to index</Link>
+            <div className="post-show">
                 <button
                     className="btn btn-danger pull-xs-right"
                     onClick={this.onDeleteClick.bind(this)}
                 >
                     Delete Post
                 </button>
+                <Link 
+                    className="btn btn-info pull-xs-right"
+                    to="/" >
+                    Back to index
+                </Link>
                 <h3>{post.title}</h3>
                 <h6>Categories: {post.categories}</h6>
                 <p>{post.content}</p>
